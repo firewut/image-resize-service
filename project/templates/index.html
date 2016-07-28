@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Choose your icon{% endblock %}
+
+{% block content %}
+
+<div class="ui vertical masthead center aligned segment">
+    <div class="ui divider hidden"></div>
+
+
+    <form action="/resize/" method="POST" class="ui form" enctype="multipart/form-data">
+        <input type="file" name="icon" id="file_input" style="display: none">
+        <div class="grid">
+            <div class="row">
+                <button class="ui icon button" id="upload">
+                    <i class="cloud icon"></i>
+                </button>
+            </div>
+            <div class="ui divider hidden"></div>
+            <div class="row">
+                <input type="submit" class="ui secondary button">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#upload").on("click", function() {
+            $('#file_input').click();
+            return false; 
+        });
+    });
+</script>
+
+{% endblock %}
