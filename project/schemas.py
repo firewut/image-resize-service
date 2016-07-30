@@ -8,11 +8,33 @@ DIRECT_LINK_SCHEMA = {
     }
 }
 
-ICONS_SCHEMA = {
+IMAGE_SCHEMA = {
     "type": "object",
     "properties": {
         "original": {
             "type": "file"
+        },
+        "size": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "custom_size": {
+            "type": "file",
+            "processors": [
+                {
+                    "name": "resize",
+                    "in": {
+                        "original_image": {
+                            "property": "original"
+                        },
+                        "size": {
+                            "property": "size"
+                        }
+                    }
+                }
+            ]
         },
         "120x120": {
             "type": "file",

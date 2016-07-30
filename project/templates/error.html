@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Error occured{% endblock %}
+
+{% block content %}
+<div class="ui vertical masthead center aligned segment">
+    <div class="ui divider hidden"></div>
+    
+    <h1 class="ui center aligned icon header">{{ message }}</h1>
+    {% if sub_message %}
+        <div class="ui warning message">
+            <i class="close icon"></i>
+            <div class="header">
+                {{ sub_message['header'] }}
+            </div>
+            {{ sub_message['content'] }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

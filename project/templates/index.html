@@ -5,21 +5,37 @@
 
 <div class="ui vertical masthead center aligned segment">
     <div class="ui divider hidden"></div>
-
-
     <form action="/resize/" method="POST" class="ui form" enctype="multipart/form-data">
-        <input type="file" name="icon" id="file_input" style="display: none">
+        <input type="file" name="image" id="file_input" style="display: none">
+        
         <div class="grid">
             <div class="row">
-                <button class="ui icon button" id="upload">
-                    <i class="cloud icon"></i>
-                </button>
+                <h1 class="ui center aligned icon header" style="margin-top:1em">
+                    <i class="cloud circular inverted red icon" id="upload"></i>
+                    <div class="content">
+                        Resize an image
+                        <div class="sub header">
+                            click the cloud, then fill sizes
+                        </div>
+                    </div>
+                </h1>
+
+                <div class="ui left icon input">
+                    <input type="text" placeholder="Width" name="width">
+                    <i class="maximize icon"></i>
+                </div>
+                <div class="ui left icon input">
+                    <input type="text" placeholder="Height" name="height">
+                    <i class="maximize icon"></i>
+                </div>
             </div>
             <div class="ui divider hidden"></div>
             <div class="row">
                 <input type="submit" class="ui secondary button">
             </div>
         </div>
+
+
     </form>
 </div>
 
