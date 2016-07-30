@@ -2,7 +2,6 @@ import zipfile
 from zipfile import ZipFile
 import os
 import tempfile
-import ipdb
 import string
 import random
 import re
@@ -46,7 +45,7 @@ for collection in collections:
             data=collection,
         )
     except Exception as e:
-        ipdb.set_trace() 
+        print(str(e)) 
 
 @app.route('/resize/', methods=['POST'])
 def resize():

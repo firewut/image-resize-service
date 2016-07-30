@@ -1,20 +1,15 @@
-FROM gliderlabs/alpine:3.4
+FROM firewut/python-base-image:0.1
 
 RUN addgroup user
 RUN adduser user -D -G user
 RUN chown -R user:user /home/user/
 RUN mkdir -p /home/user/
 
-
 WORKDIR /home/user/
 ADD ./ /home/user/
 
-RUN apk add --update python=2.7.12-r0 openssl ca-certificates py-pip libffi-dev openssl-dev && pip install --upgrade pip
-RUN apk --update add --virtual build-dependencies python-dev build-base && \
-    pip install -r /home/user/requirements.txt && \
-    rm -rf /root/.cache/ && \
-    apk del build-dependencies
-
+RUN pip install -r /home/user/requirements.txt && \
+    rm -rf /root/.cache/
 
 EXPOSE 8888
 ENTRYPOINT gunicorn project.main:app -c project.gunicorn
