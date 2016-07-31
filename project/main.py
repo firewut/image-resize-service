@@ -207,10 +207,17 @@ def get_file_by_link(direct_link_id):
     
     render_template('404.html'), 404
 
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('500.html'), 500
 
 @app.route('/')
 def index_page():
