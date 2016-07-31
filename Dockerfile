@@ -8,8 +8,10 @@ RUN mkdir -p /home/user/
 WORKDIR /home/user/
 ADD ./ /home/user/
 
-RUN pip install -r /home/user/requirements.txt && \
-    rm -rf /root/.cache/
+RUN apk --update add --virtual build-dependencies python-dev build-base && \
+    pip install -r /home/user/requirements.txt && \
+    rm -rf /root/.cache/ && \
+    apk del build-dependencies
 
 EXPOSE 8888
 ENTRYPOINT gunicorn project.main:app -c project.gunicorn
